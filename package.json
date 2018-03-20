@@ -9,9 +9,12 @@
     "lint": "eslint src providers"
   },
   "dependencies": {
-    "@slynova/fence": "^1.0.0-alpha-1"
+    "@slynova/fence": "^1.0.0-alpha-1",
+    "lodash": "^4.17.5",
+    "pluralize": "^7.0.0"
   },
   "devDependencies": {
+    "@adonisjs/ace": "^5.0.1",
     "@adonisjs/fold": "^4.0.7",
     "@slynova/eslint-config": "^1.0.4",
     "eslint": "^4.19.0"

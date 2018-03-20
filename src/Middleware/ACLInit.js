@@ -9,7 +9,7 @@
 
 const Guard = use('Guard')
 
-class GuardInit {
+class ACLInit {
   /**
    *
    *
@@ -32,4 +32,4 @@ class GuardInit {
   }
 }
 
-module.exports = GuardInit
+module.exports = ACLInit
