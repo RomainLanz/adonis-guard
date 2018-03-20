@@ -5,6 +5,9 @@
   "repository": "git@github.com:RomainLanz/adonis-acl.git",
   "author": "Romain Lanz <romain.lanz@slynova.ch>",
   "license": "MIT",
+  "scripts": {
+    "lint": "eslint src providers"
+  },
   "dependencies": {
     "@slynova/fence": "^1.0.0-alpha-1"
   },
