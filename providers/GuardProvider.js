@@ -12,24 +12,24 @@ const { ServiceProvider } = require('@adonisjs/fold')
 
 class GuardProvider extends ServiceProvider {
   /**
-   * Register all the required providers.
+   * Register namespaces to the IoC container
+   *
+   * @method register
    *
    * @return {void}
    */
   register () {
-    const Context = this.app.use('Adonis/Src/HttpContext')
-
-    Context.getter('guard', () => Guard)
-  }
-
-  /**
-   * On boot add commands with ace.
-   *
-   * @return {void}
-   */
-  boot () {
     this.app.singleton('Adonis/Addons/Gate', () => Gate)
     this.app.singleton('Adonis/Addons/Guard', () => Guard)
+
+    this.app.alias('Adonis/Addons/Gate', 'Gate')
+    this.app.alias('Adonis/Addons/Guard', 'Guard')
+
+    this.app.bind('Adonis/Middleware/GuardInit', () => {
+      const GuardInit = require('../src/Middleware/GuardInit') // eslint-disable-line global-require
+
+      return new GuardInit()
+    })
   }
 }
 

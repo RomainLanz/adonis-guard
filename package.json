@@ -12,6 +12,7 @@
     "@slynova/fence": "^1.0.0-alpha-1"
   },
   "devDependencies": {
+    "@adonisjs/fold": "^4.0.7",
     "@slynova/eslint-config": "^1.0.4",
     "eslint": "^4.19.0"
   }

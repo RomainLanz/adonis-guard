@@ -7,20 +7,25 @@
  * @copyright Slynova - Romain Lanz <romain.lanz@slynova.ch>
  */
 
-const { Guard } = require('@slynova/fence')
+const Guard = use('Guard')
 
 class GuardInit {
+  /**
+   *
+   *
+   * @method handle
+   *
+   * @param  {Function} next
+   *
+   * @return {void}
+   */
   async handle ({ auth }, next) {
-    let user = null
-
     try {
-      user = await auth.getUser()
+      const user = await auth.getUser()
+
+      Guard.setDefaultUser(user)
     } catch (e) {
       //
-    }
-
-    if (user !== null) {
-      Guard.setDefaultUser(user)
     }
 
     await next()
