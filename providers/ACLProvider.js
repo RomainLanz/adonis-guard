@@ -18,7 +18,7 @@ class ACLProvider extends ServiceProvider {
    * @return {void}
    */
   $registerCommands () {
-    this.app.bind('ACL/Commands/Make:Policy', () => require('../commands/MakePolicy'))
+    this.app.bind('ACL/Commands/Make:Policy', () => require('../commands/MakePolicy')) // eslint-disable-line global-require
   }
 
   /**
@@ -54,7 +54,8 @@ class ACLProvider extends ServiceProvider {
   }
 
   boot () {
-    const ace = require('@adonisjs/ace')
+    const ace = require('@adonisjs/ace') // eslint-disable-line global-require
+
     ace.addCommand('ACL/Commands/Make:Policy')
   }
 }
