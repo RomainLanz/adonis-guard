@@ -1,0 +1,15 @@
+{
+  "name": "adonis-acl",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:RomainLanz/adonis-acl.git",
+  "author": "Romain Lanz <romain.lanz@slynova.ch>",
+  "license": "MIT",
+  "dependencies": {
+    "@slynova/fence": "^1.0.0-alpha-1"
+  },
+  "devDependencies": {
+    "@slynova/eslint-config": "^1.0.4",
+    "eslint": "^4.19.0"
+  }
+}
