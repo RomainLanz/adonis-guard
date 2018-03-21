@@ -22,7 +22,7 @@ class ACLProvider extends ServiceProvider {
   }
 
   /**
-   * Registers providers for all the GraphQL related
+   * Registers providers for all the ACL related
    * classes.
    *
    * @return {void}
@@ -55,8 +55,11 @@ class ACLProvider extends ServiceProvider {
 
   boot () {
     const ace = require('@adonisjs/ace') // eslint-disable-line global-require
+    const View = this.app.use('Adonis/Src/View')
 
     ace.addCommand('ACL/Commands/Make:Policy')
+
+    View.global('Guard', () => Guard)
   }
 }
 

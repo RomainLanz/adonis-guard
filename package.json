@@ -17,6 +17,8 @@
     "@adonisjs/ace": "^5.0.1",
     "@adonisjs/fold": "^4.0.7",
     "@slynova/eslint-config": "^1.0.4",
-    "eslint": "^4.19.0"
+    "edge.js": "^1.1.4",
+    "eslint": "^4.19.0",
+    "japa": "^1.0.6"
   }
 }
