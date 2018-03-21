@@ -9,7 +9,7 @@
     "lint": "eslint src providers"
   },
   "dependencies": {
-    "@slynova/fence": "^1.0.0-alpha-1",
+    "@slynova/fence": "^1.0.0-beta.1",
     "lodash": "^4.17.5",
     "pluralize": "^7.0.0"
   },
