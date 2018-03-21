@@ -4,7 +4,21 @@ The provider is registered inside `start/app.js` file under `providers` array.
 
 ```js
 const providers = [
-  'adonis-acl/providers/ACLProvider'
+  'adonis-guard/providers/GuardProvider'
+]
+```
+
+## Registering middleware
+
+Add the `Adonis/Middleware/GuardInit` middleware in the `start/kernel.js` file **after** `AuthInit`.
+
+```js
+// start/kernel.js
+const globalMiddleware = [
+  ...
+  'Adonis/Middleware/AuthInit',
+  'Adonis/Middleware/GuardInit',
+  ...
 ]
 ```
 

@@ -10,19 +10,19 @@
 const { Gate, Guard } = require('@slynova/fence')
 const { ServiceProvider } = require('@adonisjs/fold')
 
-class ACLProvider extends ServiceProvider {
+class GuardProvider extends ServiceProvider {
   /**
-   * Registers providers for all the ACL related
+   * Registers providers for all the Guard related
    * commands.
    *
    * @return {void}
    */
   $registerCommands () {
-    this.app.bind('ACL/Commands/Make:Policy', () => require('../commands/MakePolicy')) // eslint-disable-line global-require
+    this.app.bind('Guard/Commands/Make:Policy', () => require('../commands/MakePolicy')) // eslint-disable-line global-require
   }
 
   /**
-   * Registers providers for all the ACL related
+   * Registers providers for all the Guard related
    * classes.
    *
    * @return {void}
@@ -34,10 +34,10 @@ class ACLProvider extends ServiceProvider {
     this.app.alias('Adonis/Addons/Gate', 'Gate')
     this.app.alias('Adonis/Addons/Guard', 'Guard')
 
-    this.app.bind('Adonis/Middleware/ACLInit', () => {
-      const ACLInit = require('../src/Middleware/ACLInit') // eslint-disable-line global-require
+    this.app.bind('Adonis/Middleware/GuardInit', () => {
+      const GuardInit = require('../src/Middleware/GuardInit') // eslint-disable-line global-require
 
-      return new ACLInit()
+      return new GuardInit()
     })
   }
 
@@ -57,10 +57,10 @@ class ACLProvider extends ServiceProvider {
     const ace = require('@adonisjs/ace') // eslint-disable-line global-require
     const View = this.app.use('Adonis/Src/View')
 
-    ace.addCommand('ACL/Commands/Make:Policy')
+    ace.addCommand('Guard/Commands/Make:Policy')
 
     View.global('Guard', Guard)
   }
 }
 
-module.exports = ACLProvider
+module.exports = GuardProvider

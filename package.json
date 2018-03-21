@@ -1,8 +1,8 @@
 {
-  "name": "adonis-acl",
-  "version": "1.0.0",
+  "name": "adonis-guard",
+  "version": "1.0.0-alpha",
   "main": "index.js",
-  "repository": "git@github.com:RomainLanz/adonis-acl.git",
+  "repository": "git@github.com:RomainLanz/adonis-guard.git",
   "author": "Romain Lanz <romain.lanz@slynova.ch>",
   "license": "MIT",
   "scripts": {

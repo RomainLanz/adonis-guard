@@ -1,7 +1,7 @@
 'use strict'
 
 /**
- * adonis-acl
+ * adonis-guard
  *
  * @license MIT
  * @copyright Slynova - Romain Lanz <romain.lanz@slynova.ch>

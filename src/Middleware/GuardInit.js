@@ -1,7 +1,7 @@
 'use strict'
 
 /**
- * adonis-acl
+ * adonis-guard
  *
  * @license MIT
  * @copyright Slynova - Romain Lanz <romain.lanz@slynova.ch>
@@ -9,7 +9,7 @@
 
 const Guard = use('Guard')
 
-class ACLInit {
+class GuardInit {
   /**
    *
    *
@@ -32,4 +32,4 @@ class ACLInit {
   }
 }
 
-module.exports = ACLInit
+module.exports = GuardInit
