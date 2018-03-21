@@ -59,7 +59,7 @@ class ACLProvider extends ServiceProvider {
 
     ace.addCommand('ACL/Commands/Make:Policy')
 
-    View.global('Guard', () => Guard)
+    View.global('Guard', Guard)
   }
 }
 
