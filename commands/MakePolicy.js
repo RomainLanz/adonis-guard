@@ -9,8 +9,8 @@
 
 const _ = require('lodash')
 const { singular } = require('pluralize')
-const { basename, join } = require('path')
 const { Command } = require('@adonisjs/ace')
+const { basename, join, sep } = require('path')
 
 class MakePolicy extends Command {
   /**
@@ -87,6 +87,9 @@ class MakePolicy extends Command {
       name: this.$getFileName(name),
       resource: this.$getResourceName(name)
     })
+
+    const createdFile = filePath.replace(process.cwd(), '').replace(sep, '')
+    console.log(`${this.icon('success')} ${this.chalk.green('create')}  ${createdFile}`)
   }
 }
 
