@@ -8,6 +8,7 @@
  */
 
 const Guard = use('Guard')
+const Context = this.app.use('Adonis/Src/HttpContext')
 
 class GuardInit {
   /**
@@ -19,11 +20,25 @@ class GuardInit {
    *
    * @return {void}
    */
-  async handle ({ auth }, next) {
+  async handle (ctx, next) {
     try {
-      const user = await auth.getUser()
+      const user = await ctx.auth.getUser()
 
-      Guard.setDefaultUser(user)
+      const guard = Guard.setDefaultUser(user)
+
+      /**
+       * Adding guard in the context
+       */
+      ctx.guard = guard
+
+      /**
+       * Sharing guard with the view
+       */
+      if (view && typeof (view.share) === 'function') {
+        view.share({
+          guard
+        })
+      }
     } catch (e) {
       //
     }
