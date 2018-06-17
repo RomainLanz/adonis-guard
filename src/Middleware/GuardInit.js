@@ -8,7 +8,6 @@
  */
 
 const Guard = use('Guard')
-const Context = this.app.use('Adonis/Src/HttpContext')
 
 class GuardInit {
   /**
