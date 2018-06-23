@@ -19,7 +19,7 @@ class MakePolicy extends Command {
    * @return {string}
    */
   static get signature () {
-    return `make:policy { name: Name of the policy }`
+    return 'make:policy { name: Name of the policy }'
   }
 
   /**
@@ -41,6 +41,7 @@ class MakePolicy extends Command {
    */
   $getFileName (name) {
     name = name.replace(/policy/ig, '')
+
     return `${singular(_.upperFirst(_.camelCase(name)))}Policy`
   }
 
@@ -55,7 +56,7 @@ class MakePolicy extends Command {
     const baseName = basename(name)
     const normalizedName = name.replace(baseName, this.$getFileName(baseName))
 
-    return join(process.cwd(), 'app/Policies', normalizedName) + '.js'
+    return `${join(process.cwd(), 'app/Policies', normalizedName)}.js`
   }
 
   /**
@@ -85,10 +86,12 @@ class MakePolicy extends Command {
 
     await this.generateFile(filePath, templateContent, {
       name: this.$getFileName(name),
-      resource: this.$getResourceName(name)
+      resource: this.$getResourceName(name),
     })
 
     const createdFile = filePath.replace(process.cwd(), '').replace(sep, '')
+
+    // eslint-disable-next-line no-console
     console.log(`${this.icon('success')} ${this.chalk.green('create')}  ${createdFile}`)
   }
 }
