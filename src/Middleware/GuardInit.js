@@ -21,7 +21,7 @@ class GuardInit {
    */
   async handle (ctx, next) {
     try {
-      const user = await ctx.auth.getUser()
+      const user = await ctx.auth.getUser().catch(() => {}) // eslint-disable-line
 
       const guard = Guard.setDefaultUser(user)
 
@@ -33,10 +33,8 @@ class GuardInit {
       /**
        * Sharing guard with the view
        */
-      if (view && typeof (view.share) === 'function') {
-        view.share({
-          guard
-        })
+      if (ctx.view && typeof (ctx.view.share) === 'function') {
+        ctx.view.share({ guard })
       }
     } catch (e) {
       //
