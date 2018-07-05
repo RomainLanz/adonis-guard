@@ -7,7 +7,7 @@
  * @copyright Slynova - Romain Lanz <romain.lanz@slynova.ch>
  */
 
-const { Gate, Guard } = require('@slynova/fence')
+const { Gate } = require('@slynova/fence')
 const { ServiceProvider } = require('@adonisjs/fold')
 
 class GuardProvider extends ServiceProvider {
@@ -29,14 +29,10 @@ class GuardProvider extends ServiceProvider {
    */
   $registerAlias () {
     this.app.singleton('Adonis/Addons/Gate', () => Gate)
-    this.app.singleton('Adonis/Addons/Guard', () => Guard)
-
     this.app.alias('Adonis/Addons/Gate', 'Gate')
-    this.app.alias('Adonis/Addons/Guard', 'Guard')
 
     this.app.bind('Adonis/Middleware/GuardInit', () => {
       const GuardInit = require('../src/Middleware/GuardInit') // eslint-disable-line global-require
-
       return new GuardInit()
     })
   }
@@ -55,11 +51,15 @@ class GuardProvider extends ServiceProvider {
 
   boot () {
     const ace = require('@adonisjs/ace') // eslint-disable-line global-require
-    const View = this.app.use('Adonis/Src/View')
-
     ace.addCommand('Guard/Commands/Make:Policy')
 
-    View.global('Guard', Guard)
+    try {
+      const View = this.app.use('Adonis/Src/View')
+      const Can = require('../src/ViewBindings/Can')
+      View.tag(new Can())
+    } catch (error) {
+      // Ignore error when end-user is not using views
+    }
   }
 }
 
