@@ -9,14 +9,14 @@
 
 const { BaseTag } = require('edge.js')
 
-class Can extends BaseTag {
+class Cannot extends BaseTag {
   /**
    * The tag name.
    *
    * @return {String}
    */
   get tagName () {
-    return 'can'
+    return 'cannot'
   }
 
   /**
@@ -42,7 +42,7 @@ class Can extends BaseTag {
   compile (compiler, lexer, buffer, { body, childs, lineno }) {
     const [ability, resource, user] = this._compileStatement(lexer, body, lineno).toStatement()
 
-    buffer.writeLine(`if (this.context.resolve('guard').allows(${ability}, ${resource}, ${user})) {`)
+    buffer.writeLine(`if (this.context.resolve('guard').denies(${ability}, ${resource}, ${user})) {`)
     buffer.indent()
 
     childs.forEach(child => compiler.parseLine(child))
