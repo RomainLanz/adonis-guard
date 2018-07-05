@@ -9,6 +9,7 @@
     "lint": "eslint src providers"
   },
   "dependencies": {
+    "@adonisjs/generic-exceptions": "^2.0.1",
     "@slynova/fence": "^1.0.2",
     "lodash": "^4.17.10",
     "pluralize": "^7.0.0"

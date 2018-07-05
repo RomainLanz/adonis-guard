@@ -31,6 +31,11 @@ class GuardProvider extends ServiceProvider {
     this.app.singleton('Adonis/Addons/Gate', () => Gate)
     this.app.alias('Adonis/Addons/Gate', 'Gate')
 
+    this.app.bind('Adonis/Middleware/Can', () => {
+      const Can = require('../src/Middleware/Can') // eslint-disable-line global-require
+      return new Can()
+    })
+
     this.app.bind('Adonis/Middleware/GuardInit', () => {
       const GuardInit = require('../src/Middleware/GuardInit') // eslint-disable-line global-require
       return new GuardInit()
@@ -57,6 +62,7 @@ class GuardProvider extends ServiceProvider {
       const View = this.app.use('Adonis/Src/View')
       const Can = require('../src/ViewBindings/Can')
       const Cannot = require('../src/ViewBindings/Cannot')
+
       View.tag(new Can())
       View.tag(new Cannot())
     } catch (error) {
