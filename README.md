@@ -14,7 +14,7 @@ Follow instruction that are displayed ([or read them here](https://github.com/Ro
 
 ## Defining your authorization
 
-**Gate**
+### Gate
 Gates must be defined inside the `start/acl.js` file. This file will be loaded only once when the server is launch.
 To define a gate, use the `Gate` facade.
 
@@ -28,7 +28,7 @@ Gate.define('gateName', (user, resource) => {
 })
 ```
 
-**Policy**
+### Policy
 You can generate a new policy by using the command `adonis make:policy {name}`.
 This will generate a file in `app/Policies/{Name}Policy.js`.
 To attach a policy to a resource, you need to call the `policy` method of the `Gate` facade.
