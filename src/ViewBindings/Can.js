@@ -42,13 +42,16 @@ class Can extends BaseTag {
   compile (compiler, lexer, buffer, { body, childs, lineno }) {
     const [ability, resource, user] = this._compileStatement(lexer, body, lineno).toStatement()
 
-    buffer.writeLine(`if (${this.context.guard.allows(ability, resource, user)}) {`)
+    buffer.writeLine(`if (this.context.resolve('guard').allows(${ability}, ${resource}, ${user})) {`)
     buffer.indent()
 
     childs.forEach(child => compiler.parseLine(child))
 
     buffer.dedent()
     buffer.writeLine('}')
+  }
+
+  run () {
   }
 }
 
