@@ -1,3 +1,18 @@
+<a name="1.0.0-beta.2"></a>
+# [1.0.0-beta.2](https://github.com/RomainLanz/adonis-guard/compare/1.0.0-beta.1...1.0.0-beta.2) (2018-07-05)
+
+
+### Bug Fixes
+
+* **view:** corrects export statment of [@cannot](https://github.com/cannot) tag ([f68fc2c](https://github.com/RomainLanz/adonis-guard/commit/f68fc2c))
+
+
+### Features
+
+* **middleware:** add can middleware ([d9cafda](https://github.com/RomainLanz/adonis-guard/commit/d9cafda))
+
+
+
 <a name="1.0.0-beta.1"></a>
 # 1.0.0-beta.1 (2018-07-05)
 

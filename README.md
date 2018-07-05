@@ -87,10 +87,27 @@ You can also use it in your view to choose to display or not an element.
 
 @cannot('edit', post)
   <p>Not allowed!</p>
-@endcan
+@endcannot
 ```
 
 The `@can` and `@cannot` tags have the same signature as `guard.allows()` and `guard.denies()`.
+
+You can also use the middleware `can` in your route.<br>
+Notice that this middleware doesn't work with resource. It will execute a gate with the loggedIn user only.
+
+```js
+Route.get('/admin/posts', 'Admin/PostController.index')
+  .middleware('can:viewAdminPosts')
+```
+
+A second argument can be supplied that will replace a resource in your gate. This is useful when you want to have dynamic route rules.
+
+```js
+Route.get('/admin/posts', 'Admin/PostController.index')
+  .middleware('can:hasRole,admin,editor')
+```
+
+`admin,editor` will be extracted into an array that you can retrieve as the second parameter in your gate.
 
 **Public API**
 

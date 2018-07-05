@@ -10,7 +10,8 @@ const providers = [
 
 ## Registering middleware
 
-Add the `Adonis/Middleware/GuardInit` middleware in the `start/kernel.js` file **after** `AuthInit`.
+Add the middleware `Adonis/Middleware/GuardInit` in the `start/kernel.js` file **after** `AuthInit`.
+Add the middleware `Adonis/Middleware/Can` in the `start/kernel.js` file in `namedMiddleware` array.
 
 ```js
 // start/kernel.js
@@ -20,7 +21,14 @@ const globalMiddleware = [
   'Adonis/Middleware/GuardInit',
   ...
 ]
+
+const namedMiddleware = {
+  ...
+  can: 'Adonis/Middleware/Can',
+  ...
+}
 ```
+
 
 ## Loading acl.js
 

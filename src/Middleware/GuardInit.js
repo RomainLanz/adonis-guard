@@ -10,15 +10,6 @@
 const { Guard } = require('@slynova/fence')
 
 class GuardInit {
-  /**
-   *
-   *
-   * @method handle
-   *
-   * @param  {Function} next
-   *
-   * @return {void}
-   */
   async handle (ctx, next) {
     const guard = Guard.setDefaultUser(ctx.auth.user || null)
 

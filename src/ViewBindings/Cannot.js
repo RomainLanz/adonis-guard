@@ -55,4 +55,4 @@ class Cannot extends BaseTag {
   }
 }
 
-module.exports = Can
+module.exports = Cannot
