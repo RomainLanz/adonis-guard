@@ -87,7 +87,7 @@ You can also use it in your view to choose to display or not an element.
 
 @cannot('edit', post)
   <p>Not allowed!</p>
-@endcan
+@endcannot
 ```
 
 The `@can` and `@cannot` tags have the same signature as `guard.allows()` and `guard.denies()`.
