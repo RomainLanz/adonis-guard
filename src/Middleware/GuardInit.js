@@ -7,7 +7,7 @@
  * @copyright Slynova - Romain Lanz <romain.lanz@slynova.ch>
  */
 
-const Guard = use('Guard')
+const { Guard } = require('@slynova/fence')
 
 class GuardInit {
   /**
@@ -20,24 +20,18 @@ class GuardInit {
    * @return {void}
    */
   async handle (ctx, next) {
-    try {
-      const user = await ctx.auth.getUser().catch(() => {}) // eslint-disable-line
+    const guard = Guard.setDefaultUser(auth.user || null)
 
-      const guard = Guard.setDefaultUser(user)
+    /**
+     * Adding guard in the context
+     */
+    ctx.guard = guard
 
-      /**
-       * Adding guard in the context
-       */
-      ctx.guard = guard
-
-      /**
-       * Sharing guard with the view
-       */
-      if (ctx.view && typeof (ctx.view.share) === 'function') {
-        ctx.view.share({ guard })
-      }
-    } catch (e) {
-      //
+    /**
+     * Sharing guard with the view
+     */
+    if (ctx.view && typeof (ctx.view.share) === 'function') {
+      ctx.view.share({ guard })
     }
 
     await next()
