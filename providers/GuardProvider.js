@@ -1,7 +1,7 @@
 'use strict'
 
 /**
- * adonis-acl
+ * adonis-guard
  *
  * @license MIT
  * @copyright Slynova - Romain Lanz <romain.lanz@slynova.ch>
@@ -56,7 +56,9 @@ class GuardProvider extends ServiceProvider {
     try {
       const View = this.app.use('Adonis/Src/View')
       const Can = require('../src/ViewBindings/Can')
+      const Cannot = require('../src/ViewBindings/Cannot')
       View.tag(new Can())
+      View.tag(new Cannot())
     } catch (error) {
       // Ignore error when end-user is not using views
     }
