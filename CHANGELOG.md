@@ -1,3 +1,13 @@
+<a name="1.0.0-beta.3"></a>
+# [1.0.0-beta.3](https://github.com/RomainLanz/adonis-guard/compare/1.0.0-beta.2...1.0.0-beta.3) (2018-07-05)
+
+
+### Bug Fixes
+
+* **middleware:** condition is now inversed ([ff908ba](https://github.com/RomainLanz/adonis-guard/commit/ff908ba))
+
+
+
 <a name="1.0.0-beta.2"></a>
 # [1.0.0-beta.2](https://github.com/RomainLanz/adonis-guard/compare/1.0.0-beta.1...1.0.0-beta.2) (2018-07-05)
 
