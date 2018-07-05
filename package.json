@@ -1,6 +1,6 @@
 {
   "name": "adonis-guard",
-  "version": "1.0.0-alpha.2",
+  "version": "1.0.0-beta.1",
   "main": "index.js",
   "repository": "git@github.com:RomainLanz/adonis-guard.git",
   "author": "Romain Lanz <romain.lanz@slynova.ch>",
@@ -17,8 +17,14 @@
     "@adonisjs/ace": "^5.0.2",
     "@adonisjs/fold": "^4.0.8",
     "@slynova/eslint-config": "^1.0.5",
+    "cz-conventional-changelog": "^2.1.0",
     "edge.js": "^1.1.4",
     "eslint": "^5.0.1",
     "japa": "^1.0.6"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
