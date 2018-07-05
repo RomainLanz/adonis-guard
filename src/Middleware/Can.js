@@ -11,7 +11,7 @@ const { AuthorizationException } = require('../Exceptions')
 
 class Can {
   async handle ({ auth, guard }, next, [method, ...argument]) {
-    if (guard.can(auth.user).pass(method).for(argument)) {
+    if (!guard.can(auth.user).pass(method).for(argument)) {
       throw new AuthorizationException()
     }
 
