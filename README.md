@@ -80,13 +80,23 @@ You can also use it in your view to choose to display or not an element.
 @if(guard.allows('edit', post))
   <a href="/posts/{{ post.id }}/edit">Edit</a>
 @endif
+
+@can('edit', post)
+  <a href="/posts/{{ post.id }}/edit">Edit</a>
+@endcan
+
+@cannot('edit', post)
+  <p>Not allowed!</p>
+@endcan
 ```
+
+The `@can` and `@cannot` tags have the same signature as `guard.allows()` and `guard.denies()`.
 
 **Public API**
 
 ```js
-guard.allows('gateName/Policy Method', resource)
-guard.denies('gateName/Policy Method', resource)
+guard.allows('gateName/Policy Method', resource) // It will use per default the authenticated user or return false if not authenticated
+guard.denies('gateName/Policy Method', resource) // It will use per default the authenticated user or return true if not authenticated
 guard.allows('gateName/Policy Method', resource, user)
 guard.denies('gateName/Policy Method', resource, user)
 guard.can(user).pass('gateName').for(resource)
