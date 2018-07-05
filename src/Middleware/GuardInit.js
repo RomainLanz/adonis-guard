@@ -20,7 +20,7 @@ class GuardInit {
    * @return {void}
    */
   async handle (ctx, next) {
-    const guard = Guard.setDefaultUser(auth.user || null)
+    const guard = Guard.setDefaultUser(ctx.auth.user || null)
 
     /**
      * Adding guard in the context
