@@ -58,16 +58,13 @@ class GuardProvider extends ServiceProvider {
     const ace = require('@adonisjs/ace') // eslint-disable-line global-require
     ace.addCommand('Guard/Commands/Make:Policy')
 
-    try {
-      const View = this.app.use('Adonis/Src/View')
+    this.app.with('Adonis/Src/View', (View) => {
       const Can = require('../src/ViewBindings/Can')
       const Cannot = require('../src/ViewBindings/Cannot')
 
       View.tag(new Can())
       View.tag(new Cannot())
-    } catch (error) {
-      // Ignore error when end-user is not using views
-    }
+    })
   }
 }
 
