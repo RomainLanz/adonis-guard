@@ -10,17 +10,17 @@
   },
   "dependencies": {
     "@adonisjs/generic-exceptions": "^2.0.1",
-    "@slynova/fence": "^1.0.2",
+    "@slynova/fence": "^1.0.3",
     "lodash": "^4.17.10",
     "pluralize": "^7.0.0"
   },
   "devDependencies": {
-    "@adonisjs/ace": "^5.0.2",
-    "@adonisjs/fold": "^4.0.8",
+    "@adonisjs/ace": "^5.0.3",
+    "@adonisjs/fold": "^4.0.9",
     "@slynova/eslint-config": "^1.0.5",
     "cz-conventional-changelog": "^2.1.0",
     "edge.js": "^1.1.4",
-    "eslint": "^5.0.1",
+    "eslint": "^5.1.0",
     "japa": "^1.0.6"
   },
   "config": {
