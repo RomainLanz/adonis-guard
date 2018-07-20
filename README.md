@@ -36,12 +36,9 @@ To attach a policy to a resource, you need to call the `policy` method of the `G
 ```js
 // start/acl.js
 const Gate = use('Gate')
-const MyPolicy = use('App/Policies/MyPolicy')
 
-Gate.policy(myResource, MyPolicy)
+Gate.policy('App/Models/MyResource', 'App/Policies/MyPolicy')
 ```
-
-> `myResource` could be a JSON object (with `_className` key), an instance, a class, or a simple string.
 
 ## Usage
 
