@@ -7,7 +7,7 @@
  * @copyright Slynova - Romain Lanz <romain.lanz@slynova.ch>
  */
 
-const { Gate } = require('@slynova/fence')
+const { Gate, Helpers } = require('@slynova/fence')
 const { ServiceProvider } = require('@adonisjs/fold')
 
 class GuardProvider extends ServiceProvider {
@@ -42,6 +42,21 @@ class GuardProvider extends ServiceProvider {
     })
   }
 
+  $monkeyPatch () {
+    Helpers.formatResourceName = (resource) => {
+      return resource.$gate.namespace
+    }
+
+    Gate.policy = (resourceName, policyName) => {
+      const resource = this.app.use(resourceName)
+      resource.$gate = { namespace: resourceName }
+
+      const policy = this.app.use(policyName)
+
+      Gate.$getStorage().storePolicy(resourceName, policy)
+    }
+  }
+
   /**
    * Register namespaces to the IoC container
    *
@@ -52,6 +67,7 @@ class GuardProvider extends ServiceProvider {
   register () {
     this.$registerCommands()
     this.$registerAlias()
+    this.$monkeyPatch()
   }
 
   boot () {
