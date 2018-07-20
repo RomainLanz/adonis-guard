@@ -7,7 +7,7 @@
  * @copyright Slynova - Romain Lanz <romain.lanz@slynova.ch>
  */
 
-const { Gate } = require('@slynova/fence')
+const { Gate, Helpers } = require('@slynova/fence')
 const { ServiceProvider } = require('@adonisjs/fold')
 
 class GuardProvider extends ServiceProvider {
@@ -42,6 +42,21 @@ class GuardProvider extends ServiceProvider {
     })
   }
 
+  $monkeyPatch () {
+    Helpers.formatResourceName = (resource) => {
+      return resource.$gate.namespace
+    }
+
+    Gate.policy = (resourceName, policyName) => {
+      const resource = this.app.use(resourceName)
+      resource.prototype.$gate = { namespace: resourceName }
+
+      const policy = this.app.make(policyName)
+
+      Gate.$getStorage().storePolicy(resourceName, policy)
+    }
+  }
+
   /**
    * Register namespaces to the IoC container
    *
@@ -52,22 +67,20 @@ class GuardProvider extends ServiceProvider {
   register () {
     this.$registerCommands()
     this.$registerAlias()
+    this.$monkeyPatch()
   }
 
   boot () {
     const ace = require('@adonisjs/ace') // eslint-disable-line global-require
     ace.addCommand('Guard/Commands/Make:Policy')
 
-    try {
-      const View = this.app.use('Adonis/Src/View')
+    this.app.with('Adonis/Src/View', (View) => {
       const Can = require('../src/ViewBindings/Can')
       const Cannot = require('../src/ViewBindings/Cannot')
 
       View.tag(new Can())
       View.tag(new Cannot())
-    } catch (error) {
-      // Ignore error when end-user is not using views
-    }
+    })
   }
 }
 

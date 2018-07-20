@@ -1,3 +1,20 @@
+<a name="1.0.0-beta.4"></a>
+# [1.0.0-beta.4](https://github.com/RomainLanz/adonis-guard/compare/1.0.0-beta.3...1.0.0-beta.4) (2018-07-20)
+
+
+### Bug Fixes
+
+* **exception:** invoke correctly the exception ([c26d297](https://github.com/RomainLanz/adonis-guard/commit/c26d297))
+* **instructions:** replace this by cli ([e032d09](https://github.com/RomainLanz/adonis-guard/commit/e032d09))
+* **monkey-patch:** sometimes it happens to do bad code ([ef0eec9](https://github.com/RomainLanz/adonis-guard/commit/ef0eec9))
+
+
+### Features
+
+* monkey patch [@slynova](https://github.com/slynova)/fence to fetch resource ([3614db1](https://github.com/RomainLanz/adonis-guard/commit/3614db1))
+
+
+
 <a name="1.0.0-beta.3"></a>
 # [1.0.0-beta.3](https://github.com/RomainLanz/adonis-guard/compare/1.0.0-beta.2...1.0.0-beta.3) (2018-07-05)
 
