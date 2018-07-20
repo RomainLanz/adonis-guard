@@ -49,9 +49,9 @@ class GuardProvider extends ServiceProvider {
 
     Gate.policy = (resourceName, policyName) => {
       const resource = this.app.use(resourceName)
-      resource.$gate = { namespace: resourceName }
+      resource.prototype.$gate = { namespace: resourceName }
 
-      const policy = this.app.use(policyName)
+      const policy = this.app.make(policyName)
 
       Gate.$getStorage().storePolicy(resourceName, policy)
     }
