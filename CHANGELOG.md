@@ -1,3 +1,13 @@
+<a name="1.0.0-beta.5"></a>
+# [1.0.0-beta.5](https://github.com/RomainLanz/adonis-guard/compare/1.0.0-beta.4...1.0.0-beta.5) (2018-09-11)
+
+
+### Bug Fixes
+
+* **tag:** allow to have only one arg ([d44b585](https://github.com/RomainLanz/adonis-guard/commit/d44b585))
+
+
+
 <a name="1.0.0-beta.4"></a>
 # [1.0.0-beta.4](https://github.com/RomainLanz/adonis-guard/compare/1.0.0-beta.3...1.0.0-beta.4) (2018-07-20)
 
