@@ -40,7 +40,8 @@ class Cannot extends BaseTag {
    * @return {void}
    */
   compile (compiler, lexer, buffer, { body, childs, lineno }) {
-    const [ability, resource, user] = this._compileStatement(lexer, body, lineno).toStatement()
+    const args = this._compileStatement(lexer, body, lineno).toStatement()
+    const [ability, resource, user] = Array.isArray(args) ? args : [args]
 
     buffer.writeLine(`if (this.context.resolve('guard').denies(${ability}, ${resource}, ${user})) {`)
     buffer.indent()
