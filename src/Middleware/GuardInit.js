@@ -11,8 +11,13 @@ const { Guard } = require('@slynova/fence')
 
 class GuardInit {
   async handle (ctx, next) {
+    /** Override denies method to work with async **/
+    Guard.prototype.denies = async function (ability, resource, user) {
+        return !(await this.allows(ability, resource, user))
+    }
+    
     const guard = Guard.setDefaultUser(ctx.auth.user || null)
-
+    
     /**
      * Adding guard in the context
      */
