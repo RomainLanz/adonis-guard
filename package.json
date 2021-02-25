@@ -9,19 +9,18 @@
     "lint": "eslint src providers"
   },
   "dependencies": {
-    "@adonisjs/generic-exceptions": "^2.0.1",
+    "@adonisjs/generic-exceptions": "^3.0.1",
     "@slynova/fence": "^1.0.6",
-    "lodash": "^4.17.10",
-    "pluralize": "^7.0.0"
+    "lodash": "^4.17.21",
+    "pluralize": "^8.0.0"
   },
   "devDependencies": {
-    "@adonisjs/ace": "^5.0.5",
+    "@adonisjs/ace": "^5.0.8",
     "@adonisjs/fold": "^4.0.9",
     "@slynova/eslint-config": "^1.0.5",
-    "cz-conventional-changelog": "^2.1.0",
+    "cz-conventional-changelog": "^3.3.0",
     "edge.js": "^1.1.4",
-    "eslint": "^5.5.0",
-    "japa": "^1.0.6"
+    "eslint": "^7.20.0"
   },
   "config": {
     "commitizen": {
